@@ -5,6 +5,7 @@
 пользователем вручную. Попробовать оба варианта. После заполнения массива
 данными, решить для него следующие задачи:*/
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -205,7 +206,29 @@ public class Main {
     Output: [1,0,0,0]
      */
     public static void taskStar(double[] array) {
+        int number = 0;
+        int[] newArray;
 
+        for (int i = 0; i < array.length; i++) {
+            number += array[i] * Math.pow(10, array.length - 1 - i);
+        }
+
+        System.out.println(Arrays.toString(array));
+        number++;
+
+        if (number / Math.pow(10, array.length - 1) >= 10) {
+            newArray = new int[array.length + 1];
+
+        } else {
+            newArray = new int[array.length];
+        }
+
+        for (int i = 0; i < newArray.length; i++) {
+            newArray[i] = (int) (number / Math.pow(10, newArray.length - 1 - i) % 10);
+        }
+
+        //getArray(array);
+        System.out.println(Arrays.toString(newArray));
     }
 
     // Метод вывода всех элементов массива
@@ -218,7 +241,7 @@ public class Main {
     public static int checked() {
         try {
             return scanner.nextInt();
-        } catch  (Exception e) {
+        } catch (Exception e) {
             System.out.println("!!!ERROR!!!");
             scanner.close();
             System.exit(1);
